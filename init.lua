@@ -1,5 +1,6 @@
 require("config.lazy")
 require("alias.remap")
+print("hello")
 
 {
 	{
