@@ -1,11 +1,13 @@
 require("config.lazy")
 require("alias.remap")
-print("hello")
+require("alias.set")
 
-{
-	{
-		'nvim-telescope/telescope.nvim', tag = '0.1.8',
-		-- or, branch = '0.1.x',
-      		dependencies = { 'nvim-lua/plenary.nvim' }
-    	}
-}
+--This stops undos being stored in RAM, undos are now persistent accross buffers 
+vim.opt.undofile = true
+local prefix = vim.env.XDG_CONFIG_HOME or vim.fn.expand("~/.config")
+
+vim.opt.undodir = { prefix .. "/nvim/.undo//"}
+
+vim.opt.backupdir = {prefix .. "/nvim/.backup//"}
+
+vim.opt.directory = { prefix .. "/nvim/.swp//"}
